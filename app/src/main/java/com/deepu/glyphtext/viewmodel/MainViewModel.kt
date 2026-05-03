@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.deepu.glyphtext.engine.FrameGenerator
 import com.deepu.glyphtext.engine.TextRenderer
 import com.deepu.glyphtext.glyph.GlyphController
+import com.deepu.glyphtext.glyph.GlyphToyPrefs
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
@@ -181,6 +182,21 @@ class MainViewModel(application: Application) : AndroidViewModel(application) {
         // Clear the Glyph display
         _currentFrame.value = FrameGenerator.blankFrame()
         glyphController.clearDisplay()
+    }
+
+    /**
+     * Save current text, speed, and animation type to SharedPreferences
+     * for the Glyph Toy Service to read during AOD playback.
+     */
+    fun saveForGlyphToy() {
+        GlyphToyPrefs.saveAll(
+            context = getApplication(),
+            text = _inputText.value,
+            speedMs = _animationSpeed.value,
+            animationType = _animationType.value
+        )
+        Log.d(TAG, "Saved Glyph Toy settings: text='${_inputText.value}', " +
+                "speed=${_animationSpeed.value}ms, type=${_animationType.value}")
     }
 
     /**

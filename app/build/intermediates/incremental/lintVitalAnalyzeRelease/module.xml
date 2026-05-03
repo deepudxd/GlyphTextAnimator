@@ -1,0 +1,19 @@
+<lint-module
+    format="1"
+    dir="C:\Users\deepu\major_project\NOTHING\app"
+    name=":app"
+    type="APP"
+    maven="GlyphTextAnimator:app:unspecified"
+    agpVersion="8.10.1"
+    buildFolder="build"
+    bootClassPath="C:\Users\deepu\AppData\Local\Android\Sdk\platforms\android-35\android.jar;C:\Users\deepu\AppData\Local\Android\Sdk\build-tools\35.0.0\core-lambda-stubs.jar"
+    javaSourceLevel="11"
+    compileTarget="android-35"
+    neverShrinking="true">
+  <lintOptions
+      abortOnError="true"
+      absolutePaths="true"
+      checkReleaseBuilds="true"
+      explainIssues="true"/>
+  <variant name="release"/>
+</lint-module>

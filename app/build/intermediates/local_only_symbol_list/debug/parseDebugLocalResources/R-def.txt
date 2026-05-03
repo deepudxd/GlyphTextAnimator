@@ -4,9 +4,13 @@ color black
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_toy_preview
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+string set_as_glyph_toy
+string toy_name
+string toy_summary
 style Theme.GlyphTextAnimator
 xml backup_rules
 xml data_extraction_rules

@@ -1,5 +1,8 @@
 package com.deepu.glyphtext.ui
 
+import android.content.ComponentName
+import android.content.Intent
+import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.animation.animateColorAsState
 import androidx.compose.animation.core.tween
@@ -46,6 +49,7 @@ import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.platform.LocalContext
 import com.deepu.glyphtext.engine.FrameGenerator
 import com.deepu.glyphtext.ui.theme.AccentAmber
 import com.deepu.glyphtext.ui.theme.AccentGreen
@@ -298,6 +302,37 @@ fun MainScreen(
             }
         }
 
+        Spacer(modifier = Modifier.height(12.dp))
+
+        // ── Set as Glyph Toy Button ──
+        val context = LocalContext.current
+        OutlinedButton(
+            onClick = {
+                viewModel.saveForGlyphToy()
+                openGlyphSettings(context)
+            },
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(56.dp),
+            shape = RoundedCornerShape(16.dp),
+            border = ButtonDefaults.outlinedButtonBorder(enabled = true).copy(
+                width = 1.dp,
+                brush = androidx.compose.ui.graphics.SolidColor(AccentAmber)
+            ),
+            colors = ButtonDefaults.outlinedButtonColors(
+                contentColor = AccentAmber
+            ),
+            enabled = inputText.isNotBlank() && !isPlaying
+        ) {
+            Text(
+                text = "⚡  SET AS GLYPH TOY",
+                style = MaterialTheme.typography.titleMedium.copy(
+                    letterSpacing = 2.sp,
+                    fontWeight = FontWeight.Bold
+                )
+            )
+        }
+
         Spacer(modifier = Modifier.height(32.dp))
     }
 }
@@ -410,3 +445,50 @@ private fun AnimationTypeSelector(
         }
     }
 }
+
+/**
+ * Open the Nothing Phone Glyph settings where the user can select Glyph Toys.
+ * Tries the Nothing Glyph Interface settings first, then falls back to general settings.
+ * Always shows a toast guiding the user to the correct location.
+ */
+private fun openGlyphSettings(context: android.content.Context) {
+    Toast.makeText(
+        context,
+        "Text saved! Go to Glyph Interface → Glyph Toy → select \"Glyph Text Animator\"",
+        Toast.LENGTH_LONG
+    ).show()
+
+    // Try Nothing's Glyph Interface settings directly
+    val glyphIntents = listOf(
+        // Nothing Phone Glyph Interface settings
+        Intent().apply {
+            component = ComponentName(
+                "com.nothing.smartcenter",
+                "com.nothing.smartcenter.glyph.GlyphSettingsActivity"
+            )
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        },
+        // Alternative: Nothing's general settings panel
+        Intent().apply {
+            component = ComponentName(
+                "com.nothing.smartcenter",
+                "com.nothing.smartcenter.MainActivity"
+            )
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        },
+        // Fallback: open the device's general Settings
+        Intent(android.provider.Settings.ACTION_SETTINGS).apply {
+            addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        }
+    )
+
+    for (intent in glyphIntents) {
+        try {
+            context.startActivity(intent)
+            return
+        } catch (_: Exception) {
+            // Try the next intent
+        }
+    }
+}
+

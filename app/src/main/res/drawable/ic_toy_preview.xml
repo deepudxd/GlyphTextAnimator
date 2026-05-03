@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ic_toy_preview — Preview icon for the Glyph Toy picker.
+    Displays a stylized grid/text icon representing the text animation toy.
+    Shows in the Nothing Toys Manager when the user selects a toy.
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <!-- Outer rounded rectangle (matrix border) -->
+    <path
+        android:pathData="M6,6h36a2,2 0,0 1,2 2v32a2,2 0,0 1,-2 2H6a2,2 0,0 1,-2 -2V8a2,2 0,0 1,2 -2z"
+        android:strokeWidth="2"
+        android:strokeColor="#FFFFFF"
+        android:fillColor="#00000000" />
+
+    <!-- Grid dots representing the 13x13 matrix (simplified as a 5x5 pattern) -->
+    <!-- Row 1 -->
+    <path android:pathData="M12,14m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M18,14m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M24,14m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M30,14m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M36,14m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Row 2 -->
+    <path android:pathData="M12,20m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M24,20m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M36,20m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Row 3 (center) -->
+    <path android:pathData="M12,26m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M18,26m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M24,26m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M30,26m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Row 4 -->
+    <path android:pathData="M12,32m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M30,32m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M36,32m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+
+    <!-- Row 5 -->
+    <path android:pathData="M12,38m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M18,38m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M24,38m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M30,38m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+    <path android:pathData="M36,38m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0"
+        android:fillColor="#FFFFFF" />
+</vector>
