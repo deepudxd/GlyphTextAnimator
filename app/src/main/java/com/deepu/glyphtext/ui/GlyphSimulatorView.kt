@@ -2,6 +2,7 @@ package com.deepu.glyphtext.ui
 
 import androidx.compose.foundation.Canvas
 import androidx.compose.foundation.background
+import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.aspectRatio
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -10,9 +11,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.geometry.CornerRadius
 import androidx.compose.ui.geometry.Offset
-import androidx.compose.ui.geometry.Size
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.DrawScope
@@ -22,11 +21,12 @@ import com.deepu.glyphtext.ui.theme.LedGlow
 import com.deepu.glyphtext.ui.theme.LedOff
 import com.deepu.glyphtext.ui.theme.LedOn
 import com.deepu.glyphtext.ui.theme.NothingBlack
+import com.deepu.glyphtext.ui.theme.NothingGray
 
 /**
- * GlyphSimulatorView — Visual 13×13 LED matrix simulator.
+ * GlyphSimulatorView — Visual 13×13 LED matrix simulator with circular dots.
  *
- * Renders a grid of rounded squares representing the Glyph Matrix LEDs.
+ * Renders a grid of circular dots representing the Glyph Matrix LEDs.
  * Each cell maps to frame[y * 13 + x], with brightness controlling the
  * white intensity and glow effect.
  *
@@ -43,13 +43,18 @@ fun GlyphSimulatorView(
     Box(
         modifier = modifier
             .fillMaxWidth()
-            .padding(horizontal = 16.dp)
+            .padding(horizontal = 12.dp)
             .aspectRatio(1f)
+            .border(
+                width = 1.dp,
+                color = NothingGray,
+                shape = RoundedCornerShape(20.dp)
+            )
             .background(
                 color = NothingBlack,
-                shape = RoundedCornerShape(16.dp)
+                shape = RoundedCornerShape(20.dp)
             )
-            .padding(8.dp),
+            .padding(12.dp),
         contentAlignment = Alignment.Center
     ) {
         Canvas(
@@ -59,9 +64,7 @@ fun GlyphSimulatorView(
         ) {
             val gridSize = size.width
             val cellSize = gridSize / matrixSize
-            val ledSize = cellSize * 0.75f
-            val ledCornerRadius = ledSize * 0.2f
-            val ledOffset = (cellSize - ledSize) / 2f
+            val dotRadius = cellSize * 0.35f
 
             for (y in 0 until matrixSize) {
                 for (x in 0 until matrixSize) {
@@ -72,14 +75,13 @@ fun GlyphSimulatorView(
                         0
                     }
 
-                    val cellX = x * cellSize + ledOffset
-                    val cellY = y * cellSize + ledOffset
+                    val centerX = x * cellSize + cellSize / 2f
+                    val centerY = y * cellSize + cellSize / 2f
 
-                    drawLed(
-                        x = cellX,
-                        y = cellY,
-                        size = ledSize,
-                        cornerRadius = ledCornerRadius,
+                    drawLedDot(
+                        centerX = centerX,
+                        centerY = centerY,
+                        radius = dotRadius,
                         brightness = brightness
                     )
                 }
@@ -89,48 +91,44 @@ fun GlyphSimulatorView(
 }
 
 /**
- * Draws a single LED cell with optional glow effect.
+ * Draws a single circular LED dot with optional glow effect.
  */
-private fun DrawScope.drawLed(
-    x: Float,
-    y: Float,
-    size: Float,
-    cornerRadius: Float,
+private fun DrawScope.drawLedDot(
+    centerX: Float,
+    centerY: Float,
+    radius: Float,
     brightness: Int
 ) {
     val alpha = brightness / 255f
+    val center = Offset(centerX, centerY)
 
     if (brightness == 0) {
-        // LED off — dark cell
-        drawRoundRect(
+        // LED off — dim dot
+        drawCircle(
             color = LedOff,
-            topLeft = Offset(x, y),
-            size = Size(size, size),
-            cornerRadius = CornerRadius(cornerRadius, cornerRadius)
+            radius = radius,
+            center = center
         )
     } else {
         // Glow layer — soft radial gradient behind the LED
-        val glowPadding = size * 0.3f
-        drawRoundRect(
+        drawCircle(
             brush = Brush.radialGradient(
                 colors = listOf(
-                    LedGlow.copy(alpha = alpha * 0.6f),
+                    LedGlow.copy(alpha = alpha * 0.5f),
                     Color.Transparent
                 ),
-                center = Offset(x + size / 2f, y + size / 2f),
-                radius = size * 0.8f
+                center = center,
+                radius = radius * 2.2f
             ),
-            topLeft = Offset(x - glowPadding, y - glowPadding),
-            size = Size(size + glowPadding * 2, size + glowPadding * 2),
-            cornerRadius = CornerRadius(cornerRadius * 1.5f, cornerRadius * 1.5f)
+            radius = radius * 2.2f,
+            center = center
         )
 
-        // LED on — white with brightness-based alpha
-        drawRoundRect(
+        // LED on — white circle with brightness-based alpha
+        drawCircle(
             color = LedOn.copy(alpha = alpha),
-            topLeft = Offset(x, y),
-            size = Size(size, size),
-            cornerRadius = CornerRadius(cornerRadius, cornerRadius)
+            radius = radius,
+            center = center
         )
     }
 }

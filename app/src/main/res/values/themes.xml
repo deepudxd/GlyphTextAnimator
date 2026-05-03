@@ -1,8 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
+    <!-- Base app theme — Nothing OS inspired pure black -->
     <style name="Theme.GlyphTextAnimator" parent="android:Theme.Material.NoActionBar">
-        <item name="android:statusBarColor">#FF0A0A0A</item>
-        <item name="android:navigationBarColor">#FF0A0A0A</item>
-        <item name="android:windowBackground">#FF0A0A0A</item>
+        <item name="android:statusBarColor">#FF000000</item>
+        <item name="android:navigationBarColor">#FF000000</item>
+        <item name="android:windowBackground">#FF000000</item>
     </style>
+
+    <!-- Splash theme fallback for pre-Android 12 -->
+    <style name="Theme.GlyphType.Splash" parent="Theme.GlyphTextAnimator">
+        <item name="android:windowBackground">#FF000000</item>
+    </style>
+
 </resources>

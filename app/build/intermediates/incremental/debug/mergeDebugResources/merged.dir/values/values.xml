@@ -1,11 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:ns1="http://schemas.android.com/tools" xmlns:ns2="urn:oasis:names:tc:xliff:document:1.2">
     <attr format="reference" name="nestedScrollViewStyle"/>
+    <attr format="reference" name="postSplashScreenTheme"/>
+    <attr format="dimension" name="splashScreenIconSize"/>
+    <attr format="reference" name="windowSplashScreenAnimatedIcon"/>
+    <attr format="integer" name="windowSplashScreenAnimationDuration"/>
+    <attr format="color" name="windowSplashScreenBackground"/>
+    <attr format="color" name="windowSplashScreenIconBackgroundColor"/>
     <color name="androidx_core_ripple_material_light">#1f000000</color>
     <color name="androidx_core_secondary_text_default_material_light">#8a000000</color>
     <color name="black">#FF000000</color>
     <color name="call_notification_answer_color">#1d873b</color>
     <color name="call_notification_decline_color">#d93025</color>
+    <color name="glyph_black">#FF000000</color>
+    <color name="glyph_gray">#FF333333</color>
+    <color name="glyph_surface">#FF1A1A1A</color>
+    <color name="glyph_white">#FFFFFFFF</color>
     <color name="notification_action_color_filter">#ffffffff</color>
     <color name="notification_icon_bg_color">#ff9e9e9e</color>
     <color name="white">#FFFFFFFF</color>
@@ -31,6 +41,13 @@
     <dimen name="notification_subtext_size">13sp</dimen>
     <dimen name="notification_top_pad">10dp</dimen>
     <dimen name="notification_top_pad_large_text">5dp</dimen>
+    <dimen name="splashscreen_icon_mask_size_no_background">410dp</dimen>
+    <dimen name="splashscreen_icon_mask_size_with_background">342dp</dimen>
+    <dimen name="splashscreen_icon_mask_stroke_no_background">109dp</dimen>
+    <dimen name="splashscreen_icon_mask_stroke_with_background">92dp</dimen>
+    <dimen name="splashscreen_icon_size">?splashScreenIconSize</dimen>
+    <dimen name="splashscreen_icon_size_no_background">288dp</dimen>
+    <dimen name="splashscreen_icon_size_with_background">240dp</dimen>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <drawable name="notification_template_icon_low_bg">#0cffffff</drawable>
     <item name="accessibility_action_clickable_span" type="id"/>
@@ -101,10 +118,11 @@
     <id name="view_tree_saved_state_registry_owner"/>
     <id name="view_tree_view_model_store_owner"/>
     <item name="wrapped_composition_tag" type="id"/>
+    <integer name="default_icon_animation_duration">10000</integer>
     <integer name="m3c_window_layout_in_display_cutout_mode">1</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <string name="androidx_startup" translatable="false">androidx.startup</string>
-    <string name="app_name">Glyph Text Animator</string>
+    <string name="app_name">GlyphType</string>
     <string name="autofill">Autofill</string>
     <string name="call_notification_answer_action">Answer</string>
     <string name="call_notification_answer_video_action">Video</string>
@@ -256,11 +274,19 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="switch_role">Switch</string>
     <string name="tab">Tab</string>
+    <string name="tagline">Type • Animate • Glow</string>
     <string name="template_percent"><ns2:g id="percentage">%1$d</ns2:g> percent.</string>
     <string name="tooltip_description">tooltip</string>
     <string name="tooltip_label">show tooltip</string>
-    <string name="toy_name">Glyph Text Animator</string>
+    <string name="toy_name">GlyphType</string>
     <string name="toy_summary">Scrolling text animation on your Glyph Matrix</string>
+    <style name="Base.Theme.SplashScreen" parent="Base.v21.Theme.SplashScreen"/>
+    <style name="Base.Theme.SplashScreen.DayNight" parent="Base.Theme.SplashScreen.Light"/>
+    <style name="Base.Theme.SplashScreen.Light" parent="Base.v21.Theme.SplashScreen.Light"/>
+    <style name="Base.v21.Theme.SplashScreen" parent="android:Theme.DeviceDefault.NoActionBar">
+    </style>
+    <style name="Base.v21.Theme.SplashScreen.Light" parent="android:Theme.DeviceDefault.Light.NoActionBar">
+    </style>
     <style name="DialogWindowTheme">
         <item name="android:windowClipToOutline">false</item>
     </style>
@@ -297,9 +323,38 @@
     </style>
     <style name="TextAppearance.Compat.Notification.Title" parent="@android:style/TextAppearance.StatusBar.EventContent.Title"/>
     <style name="Theme.GlyphTextAnimator" parent="android:Theme.Material.NoActionBar">
-        <item name="android:statusBarColor">#FF0A0A0A</item>
-        <item name="android:navigationBarColor">#FF0A0A0A</item>
-        <item name="android:windowBackground">#FF0A0A0A</item>
+        <item name="android:statusBarColor">#FF000000</item>
+        <item name="android:navigationBarColor">#FF000000</item>
+        <item name="android:windowBackground">#FF000000</item>
+    </style>
+    <style name="Theme.GlyphType.Splash" parent="Theme.GlyphTextAnimator">
+        <item name="android:windowBackground">#FF000000</item>
+    </style>
+    <style name="Theme.SplashScreen" parent="Theme.SplashScreen.Common">
+        <item name="postSplashScreenTheme">?android:attr/theme</item>
+        <item name="windowSplashScreenAnimationDuration">
+            @integer/default_icon_animation_duration
+        </item>
+        <item name="windowSplashScreenBackground">?android:colorBackground</item>
+        <item name="windowSplashScreenAnimatedIcon">@android:drawable/sym_def_app_icon</item>
+
+    </style>
+    <style name="Theme.SplashScreen.Common" parent="Base.Theme.SplashScreen.DayNight">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">
+            @drawable/compat_splash_screen_no_icon_background
+        </item>
+        <item name="android:opacity">opaque</item>
+        <item name="android:windowDrawsSystemBarBackgrounds">true</item>
+        <item name="android:fitsSystemWindows">false</item>
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+        <item name="splashScreenIconSize">@dimen/splashscreen_icon_size_no_background</item>
+    </style>
+    <style name="Theme.SplashScreen.IconBackground" parent="Theme.SplashScreen">
+        <item name="android:windowBackground">@drawable/compat_splash_screen</item>
+        <item name="splashScreenIconSize">@dimen/splashscreen_icon_size_with_background</item>
     </style>
     <style name="Widget.Compat.NotificationActionContainer" parent=""/>
     <style name="Widget.Compat.NotificationActionText" parent=""/>
@@ -332,14 +387,23 @@
         <attr format="reference" name="fontProviderCerts"/>
         
         <attr name="fontProviderFetchStrategy">
-            
+            <!-- The blocking font fetch works as follows.
+              First, check the local cache, then if the requested font is not cached, request the
+              font from the provider and wait until it is finished.  You can change the length of
+              the timeout by modifying fontProviderFetchTimeout.  If the timeout happens, the
+              default typeface will be used instead. -->
             <enum name="blocking" value="0"/>
-            
+            <!-- The async font fetch works as follows.
+              First, check the local cache, then if the requested font is not cached, trigger a
+              request the font and continue with layout inflation. Once the font fetch succeeds, the
+              target text view will be refreshed with the downloaded font data. The
+              fontProviderFetchTimeout will be ignored if async loading is specified. -->
             <enum name="async" value="1"/>
         </attr>
         
         <attr format="integer" name="fontProviderFetchTimeout">
-            
+            <!-- A special value for the timeout. In this case, the blocking font fetching will not
+              timeout and wait until a reply is received from the font provider. -->
             <enum name="forever" value="-1"/>
         </attr>
         

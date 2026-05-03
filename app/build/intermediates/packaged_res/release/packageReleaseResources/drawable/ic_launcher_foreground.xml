@@ -1,22 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+    GlyphType launcher icon foreground.
+    Dot-matrix "G" with motion trail effect.
+    Designed for 108×108 adaptive icon canvas (72×72 safe zone, inset 18dp).
+-->
 <vector xmlns:android="http://schemas.android.com/apk/res/android"
     android:width="108dp"
     android:height="108dp"
     android:viewportWidth="108"
     android:viewportHeight="108">
-    <!-- 3x3 grid of dots representing the Glyph Matrix -->
-    <!-- Centered in the 108x108 safe zone (inset 18dp each side = 72x72 usable) -->
-    <path
-        android:fillColor="#FFFFFF"
-        android:pathData="
-            M40,40 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-            M50,40 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-            M60,40 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-            M40,50 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-            M50,50 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-            M60,50 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-            M40,60 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-            M50,60 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-            M60,60 a4,4 0 1,0 8,0 a4,4 0 1,0 -8,0
-        " />
+
+    <!-- Dot-matrix "G" letter — built from circular dots on a ~7×7 grid -->
+    <!-- Grid origin ~(36, 30), dot spacing = 6, dot radius = 2.2 -->
+
+    <!-- Row 1: Top bar of G -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M48,33 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M54,33 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M60,33 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M66,33 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+
+    <!-- Row 2: Left side -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M42,39 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+
+    <!-- Row 3: Left side -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M42,45 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+
+    <!-- Row 4: Left side + middle bar of G -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M42,51 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M54,51 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M60,51 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M66,51 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+
+    <!-- Row 5: Left side + right side -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M42,57 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M66,57 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+
+    <!-- Row 6: Left side + right side -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M42,63 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M66,63 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+
+    <!-- Row 7: Bottom bar of G -->
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M48,69 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M54,69 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M60,69 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+    <path android:fillColor="#FFFFFF"
+        android:pathData="M66,69 a2.2,2.2 0 1,0 4.4,0 a2.2,2.2 0 1,0 -4.4,0" />
+
+    <!-- Motion trail dots — scrolling effect to the left of the G -->
+    <!-- Trail dot 1 (closest, 40% opacity) -->
+    <path android:fillColor="#66FFFFFF"
+        android:pathData="M34,45 a2.0,2.0 0 1,0 4.0,0 a2.0,2.0 0 1,0 -4.0,0" />
+    <!-- Trail dot 2 (medium, 25% opacity) -->
+    <path android:fillColor="#40FFFFFF"
+        android:pathData="M28,51 a1.8,1.8 0 1,0 3.6,0 a1.8,1.8 0 1,0 -3.6,0" />
+    <!-- Trail dot 3 (farthest, 12% opacity) -->
+    <path android:fillColor="#1FFFFFFF"
+        android:pathData="M23,57 a1.5,1.5 0 1,0 3.0,0 a1.5,1.5 0 1,0 -3.0,0" />
+
 </vector>

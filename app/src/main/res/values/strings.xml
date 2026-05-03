@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Glyph Text Animator</string>
+    <string name="app_name">GlyphType</string>
+    <string name="tagline">Type • Animate • Glow</string>
     <string name="set_as_glyph_toy">⚡  SET AS GLYPH TOY</string>
-    <string name="toy_name">Glyph Text Animator</string>
+    <string name="toy_name">GlyphType</string>
     <string name="toy_summary">Scrolling text animation on your Glyph Matrix</string>
 </resources>

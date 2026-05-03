@@ -23,11 +23,11 @@
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:extractNativeLibs="false"
         android:fullBackupContent="@xml/backup_rules"
-        android:icon="@drawable/ic_launcher_foreground"
+        android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/ic_launcher_foreground"
+        android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.GlyphTextAnimator" >
+        android:theme="@style/Theme.GlyphType.Splash" >
 
         <!-- Nothing API Key — required by GlyphMatrixManager -->
         <meta-data
@@ -38,13 +38,35 @@
         <activity
             android:name="com.deepu.glyphtext.MainActivity"
             android:exported="true"
-            android:theme="@style/Theme.GlyphTextAnimator" >
+            android:theme="@style/Theme.GlyphType.Splash" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Glyph Toy Service — runs text animation on AOD (Always-On Display) -->
+        <service
+            android:name="com.deepu.glyphtext.glyph.TextGlyphToyService"
+            android:exported="true" >
+            <intent-filter>
+                <action android:name="com.nothing.glyph.TOY" />
+            </intent-filter>
+
+            <meta-data
+                android:name="com.nothing.glyph.toy.name"
+                android:resource="@string/app_name" />
+            <meta-data
+                android:name="com.nothing.glyph.toy.image"
+                android:resource="@drawable/ic_toy_preview" />
+            <meta-data
+                android:name="com.nothing.glyph.toy.summary"
+                android:resource="@string/toy_summary" />
+            <meta-data
+                android:name="com.nothing.glyph.toy.aod_support"
+                android:value="1" />
+        </service>
 
         <provider
             android:name="androidx.startup.InitializationProvider"

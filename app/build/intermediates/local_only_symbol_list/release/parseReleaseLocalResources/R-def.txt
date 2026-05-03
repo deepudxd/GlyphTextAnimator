@@ -1,12 +1,22 @@
 R_DEF: Internal format may change without notice
 local
 color black
+color glyph_black
+color glyph_gray
+color glyph_surface
+color glyph_white
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable ic_toy_preview
 mipmap ic_launcher
 mipmap ic_launcher_round
 string app_name
+string set_as_glyph_toy
+string tagline
+string toy_name
+string toy_summary
 style Theme.GlyphTextAnimator
+style Theme.GlyphType.Splash
 xml backup_rules
 xml data_extraction_rules
