@@ -17,7 +17,7 @@ Output: Scrolling LED animation on the Glyph Matrix ← ← ←
 2. **Choose animation** — smooth scroll or typewriter effect
 3. **Adjust speed** — from blazing fast (30ms) to slow reveal (500ms)
 4. **Preview live** — built-in 13×13 circular dot-matrix simulator
-5. **Set as Glyph Toy** — runs on your Always-On Display
+5. **Set as Glyph Toy** — runs on your Always-On Glyph Display
 
 ---
 
