@@ -50,5 +50,5 @@ lint/tmp/
 # Kotlin
 *.kotlin_module
 
-# Keep the SDK AAR (needed to build)
-!app/libs/*.aar
+# AAR files (download SDK separately — see README)
+*.aar
